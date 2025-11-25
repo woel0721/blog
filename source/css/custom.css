@@ -22,30 +22,3 @@ body {
   background: url(https://9ed13c84.woel-cloudflare-imgbed.pages.dev/file/Sakura_no_Uta/1763718949374_shizuku1.webp) no-repeat center center;
   background-size: cover;
 }
-
-/* 自定义浮动音乐播放器样式 */
-#floating-music-player {
-  /* 关键属性：固定定位 */
-  position: fixed !important; 
-  
-  /* 定位到右下角，距离底部和右侧各 20px */
-  bottom: 20px !important;
-  right: 20px !important;
-  
-  /* 确保播放器在最上层，不会被其他内容遮挡 */
-  z-index: 99999 !important; 
-
-  /* 你可以根据需要调整大小 */
-  width: 60px !important;
-  height: 60px !important;
-}
-
-/* 可选：为移动设备调整大小和位置 */
-@media (max-width: 768px) {
-  #floating-music-player {
-    width: 50px !important;
-    height: 50px !important;
-    bottom: 15px !important;
-    right: 15px !important;
-  }
-}
