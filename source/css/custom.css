@@ -30,3 +30,8 @@ body {
   background-color: inherit;
   /* 使用继承的背景色 */
 }
+
+.loading-img {
+  background: url(https://9ed13c84.woel-cloudflare-imgbed.pages.dev/file/Sakura_no_Uta/1763718949374_shizuku1.webp) no-repeat center center;
+  background-size: cover;
+}
