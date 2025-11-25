@@ -23,6 +23,7 @@ menu:
    友链: /link/ || fas fa-link
    分类: /categories/ || fa fa-archive
    归档: /archives/ || fa fa-folder-open
+   图库: /album/ || fas fa-images
   # List||fas fa-list || hide:
   #   Music: /music/ || fas fa-music
   #   Movie: /movies/ || fas fa-video
