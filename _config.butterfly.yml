@@ -1062,12 +1062,12 @@ inject:
   head:
     - <link rel="stylesheet" href="/css/custom.css">
     # 网易云音乐模块
-    - <link rel="stylesheet" href="https://api.hypcvgm.top/NeteaseMiniPlayer/netease-mini-player-v2.css">
+    #  - <link rel="stylesheet" href="https://api.hypcvgm.top/NeteaseMiniPlayer/netease-mini-player-v2.css">
   bottom:
     - <script src="/js/custom.js"></script>
     # 网易云音乐模块
-    - <script src="https://api.hypcvgm.top/NeteaseMiniPlayer/netease-mini-player-v2.js"></script>
-    - <div class="netease-mini-player" data-playlist-id="14273792576" data-embed="false" data-position="bottom-left" data-lyric="true" data-theme="auto" data-default-minimized="true"></div>
+    #- <script src="https://api.hypcvgm.top/NeteaseMiniPlayer/netease-mini-player-v2.js"></script>
+    #- <div class="netease-mini-player" data-playlist-id="14273792576" data-embed="false" data-position="bottom-left" data-lyric="true" data-theme="auto" data-default-minimized="true"></div>
 
 
 # CDN Settings
