@@ -922,6 +922,17 @@ lightbox:
 # Tag Plugins settings
 # --------------------------------------
 
+tag_plugins:
+  enable: true
+  priority: 5
+  issues: false
+  link:
+    placeholder: /img/friend_404.gif
+  CDN:
+    iconfont: false
+    carousel: https://unpkg.zhimg.com/hexo-butterfly-tag-plugins-plus@1.0.18/lib/assets/carousel-touch.js
+    tag_plugins_css: https://unpkg.zhimg.com/hexo-butterfly-tag-plugins-plus@1.0.18/lib/tag_plugins.css
+
 # Series
 series:
   enable: false
