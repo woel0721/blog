@@ -1,5 +1,5 @@
 ---
-title: 数据结构
+title: 数据结构(PYTHON)
 tags:
   - cs
 categories:
@@ -9,8 +9,15 @@ date: 2025-12-15 20:43:24
 ---
 笔记参考：[手把手带你刷Leetcode力扣｜各个击破数据结构和算法｜大厂面试必备技能【已完结】](https://www.bilibili.com/video/BV1sy4y1q79M/?p=5&share_source=copy_web&vd_source=165058883e2be419daa6103c8faf3e48)
 
+## 内容索引
+- 线性结构：数组、链表、队列、栈
+- 哈希相关：哈希表、集合
+- 树与堆：二叉树、堆
+- 图结构：邻接表、邻接矩阵
+- 每个模块包含：基础操作 + 对应力扣题
+
 # 数组
-数组：在不连续的空间中，存储一组相同类型的元素 
+数组：在连续的内存空间中存储一组相同类型的元素。
 ```python
 # 创建数组
 a = []
@@ -24,7 +31,7 @@ a.append(3)
 print(a)
 
 # 插入元素
-# 时间复杂度；O(N)
+# 时间复杂度：O(N)
 a.insert(2, 99)
 # [1,2,99,3]
 print(a)
@@ -53,7 +60,7 @@ print(a)
 a.pop()
 # [1]
 print(a)
----------------
+# ----------
 a = [1,2,3]
 
 # 获取数组长度
@@ -93,6 +100,11 @@ print(a)
 
 
 ## 力扣485 最大连续1的个数
+- 题型：数组遍历
+- 思路：连续计数，遇到 0 就清零，并持续更新最大值。
+- 时间复杂度：O(n)
+- 空间复杂度：O(1)
+
 给定一个二进制数组 nums ， 计算其中最大连续 1 的个数。
 
 >示例 1：
@@ -116,6 +128,11 @@ class Solution:
 ```
 
 ## 力扣283 移动零
+- 题型：双指针
+- 思路：先把非 0 元素前移，再把剩余位置补 0。
+- 时间复杂度：O(n)
+- 空间复杂度：O(1)
+
 给定一个数组 nums，编写一个函数将所有 0 移动到数组的末尾，同时保持非零元素的相对顺序。
 请注意 ，必须在不复制数组的情况下原地对数组进行操作。
 
@@ -141,6 +158,11 @@ class Solution:
 ```
 
 ## 力扣27 移除元素
+- 题型：双指针
+- 思路：慢指针写入保留值，快指针扫描全数组。
+- 时间复杂度：O(n)
+- 空间复杂度：O(1)
+
 给你一个数组 nums 和一个值 val，你需要 原地 移除所有数值等于 val 的元素。元素的顺序可能发生改变。然后返回 nums 中与 val 不同的元素的数量。
 假设 nums 中不等于 val 的元素数量为 k，要通过此题，您需要执行以下操作：
 更改 nums 数组，使 nums 的前 k 个元素包含不等于 val 的元素。nums 的其余元素和 nums 的大小并不重要。
@@ -170,7 +192,8 @@ class Solution:
 
 # 链表
 链表是节点串联的线性数据结构，节点由数据域 + 指针域组成。<br>
-核心特点是内存非连续存储，导致增删高效、随机访问低效。
+核心特点是内存非连续存储，增删高效、随机访问低效。  
+在 Python 中可用 `collections.deque` 模拟链式结构的常见操作。
 ```python
 # 导入
 from collections import deque
@@ -200,7 +223,7 @@ print(element)
 
 # 搜索元素
 # 时间复杂度：O(N)
-index = linedelist.index(99)
+index = linkedlist.index(99)
 # 2
 print(index)
 
@@ -225,6 +248,11 @@ length = len(linkedlist)
 print(length)
 ```
 ## 力扣203 移除链表元素
+- 题型：链表删除
+- 思路：使用虚拟头节点统一删除逻辑，逐个跳过目标值节点。
+- 时间复杂度：O(n)
+- 空间复杂度：O(1)
+
 给你一个链表的头节点 head 和一个整数 val ，请你删除链表中所有满足 Node.val == val 的节点，并返回 新的头节点 。
 
 >示例 1:
@@ -255,6 +283,11 @@ class Solution:
 ```
 
 ## 力扣206 反转链表
+- 题型：链表反转
+- 思路：头插法迭代把后续节点插到虚拟头之后。
+- 时间复杂度：O(n)
+- 空间复杂度：O(1)
+
 给你单链表的头节点 head ，请你反转链表，并返回反转后的链表。
  
 
@@ -283,7 +316,7 @@ class Solution:
         return dummy.next
 ```
 # 队列
-队列是遵循先进先出（FIFO） 原则的线性数据结构，仅允许在队尾添加元素（入队）、在队首移除元素（出队），不支持随机访问。
+队列是遵循先进先出（FIFO）原则的线性数据结构，仅允许在队尾添加元素（入队）、在队首移除元素（出队），不支持随机访问。
 ```python
 from collections import deque
 
@@ -293,7 +326,7 @@ queue = deque()
 # 添加元素
 # 时间复杂度：O(1)
 queue.append(1)
-queue.qppend(2)
+queue.append(2)
 queue.append(3)
 # [1,2,3]
 print(queue)
@@ -323,6 +356,11 @@ while len(queue) != 0:
     print(temp)
 ```
 ## 力扣933 最近的请求次数
+- 题型：队列滑动窗口
+- 思路：入队新时间戳，持续弹出窗口左侧过期请求。
+- 时间复杂度：均摊 O(1)
+- 空间复杂度：O(n)
+
 写一个 `RecentCounter` 类来计算特定时间范围内最近的请求。
 请你实现 `RecentCounter` 类：
 `RecentCounter()` 初始化计数器，请求数为 0 。
@@ -353,7 +391,7 @@ class RecentCounter:
             self.q.popleft()
         return len(self.q)
 ```
-#  栈
+# 栈
 栈的核心原则是后进先出（LIFO），与队列的先进先出（FIFO）形成鲜明对比。
 栈的所有操作都被严格限制在栈顶，无法对中间或栈底元素进行随机增删查。
 ```python
@@ -364,12 +402,12 @@ stack = []
 # 时间复杂度：O(1)
 stack.append(1)
 stack.append(2)
-stack.appemd(3)
+stack.append(3)
 # [1,2,3]
 print(stack)
 
 # 获取栈顶元素
-# 时间复杂度；O(1)
+# 时间复杂度：O(1)
 stack[-1]
 
 # 删除栈顶元素
@@ -387,12 +425,17 @@ len(stack)
 len(stack) == 0
 
 # 栈的遍历(边删除边遍历)
-# 时间复杂度： O(N)
+# 时间复杂度：O(N)
 while len(stack) > 0:
     temp = stack.pop()
     print(temp)
 ```
 ## 力扣20 有效的括号
+- 题型：栈匹配
+- 思路：遇左括号压入期望右括号，遇右括号立即校验。
+- 时间复杂度：O(n)
+- 空间复杂度：O(n)
+
 给定一个只包括 '('，')'，'{'，'}'，'['，']' 的字符串 s ，判断字符串是否有效。
 有效字符串需满足：
 左括号必须用相同类型的右括号闭合。
@@ -428,7 +471,12 @@ class Solution:
                 return False
         return not stack
 ```
-## 力扣496 下一个更大元素
+## 力扣496 下一个更大元素（朴素版）
+- 题型：模拟
+- 思路：对 nums1 每个元素在 nums2 中向右线性寻找更大值。
+- 时间复杂度：O(mn)
+- 空间复杂度：O(1) 或 O(n)（按实现）
+
 nums1 中数字 x 的 下一个更大元素 是指 x 在 nums2 中对应位置 右侧 的 第一个 比 x 大的元素。
 给你两个 没有重复元素 的数组 nums1 和 nums2 ，下标从 0 开始计数，其中nums1 是 nums2 的子集。
 对于每个 0 <= i < nums1.length ，找出满足 nums1[i] == nums2[j] 的下标 j ，并且在 nums2 确定 nums2[j] 的 下一个更大元素 。如果不存在下一个更大元素，那么本次查询的答案是 -1 。
@@ -467,7 +515,7 @@ class Solution:
 ```
 # 哈希表
 核心原理：依靠哈希函数建立键与存储位置的映射关系，是数组和哈希函数结合的产物。
-核心优势：平均时间复杂度为 O (1) 的快速存取，这是哈希表最突出的特点。
+核心优势：平均时间复杂度为 O(1) 的快速存取，这是哈希表最突出的特点。
 核心问题：存在哈希冲突（不同键通过哈希函数得到相同存储位置），需通过开放寻址、链地址法等方式解决。
 ```python
 # 创建哈希表 by 数组
@@ -479,8 +527,8 @@ mapping = {}
 # 时间复杂度：O(1)
 hashTable[1] = 'hanmeimei'
 hashTable[2] = 'lihua'
-hashtable[3] = 'siyangyuan'
-mapping[1] = 'hanmemei'
+hashTable[3] = 'siyangyuan'
+mapping[1] = 'hanmeimei'
 mapping[2] = 'lihua'
 mapping[3] = 'siyangyuan'
 
@@ -492,16 +540,16 @@ mapping[1] = 'bishi'
 # 删除元素
 # 时间复杂度：O(1)
 hashTable[1] = ''
-mapping,pop(1)
-del mapping[1]
+mapping.pop(1)
+del mapping[2]
 
 # 获取元素
-# 时间复杂度：O (1)
+# 时间复杂度：O(1)
 hashTable[3]
 mapping[3]
 
 # 检查key是否存在
-# 时间复杂度： O(1)
+# 时间复杂度：O(1)
 # hashTable No
 3 in mapping
 
@@ -515,7 +563,12 @@ len(mapping)
 # hashTable No
 len(mapping) == 0
 ```
-## 力扣217 存在重复元素
+## 力扣217 存在重复元素（哈希计数版）
+- 题型：哈希统计
+- 思路：用字典统计频次，出现频次大于 1 即返回 true。
+- 时间复杂度：O(n)
+- 空间复杂度：O(n)
+
 给你一个整数数组 nums 。如果任一值在数组中出现 至少两次 ，返回 true ；如果数组中每个元素互不相同，返回 false 。
  
 >示例 1：
@@ -547,6 +600,11 @@ class Solution:
         return False
 ```
 ## 力扣389 找不同
+- 题型：计数数组
+- 思路：先减后判，扫描 t 时首次出现负值即为新增字符。
+- 时间复杂度：O(n)
+- 空间复杂度：O(1)（固定 26）
+
 给定两个字符串 s 和 t ，它们只包含小写字母。
 字符串 t 由字符串 s 随机重排，然后在随机位置添加一个字母。
 请找出在 t 中被添加的字母。
@@ -572,7 +630,12 @@ class Solution:
             if cnt[idx] < 0:
                 return ch
 ```
-## 力扣496 下一个更大的元素
+## 力扣496 下一个更大元素（单调栈版）
+- 题型：单调栈 + 哈希
+- 思路：在 nums2 中维护递减栈，弹栈时建立“元素 -> 下一个更大值”映射。
+- 时间复杂度：O(m+n)
+- 空间复杂度：O(n)
+
 题目见上
 ```python
 class Solution:
@@ -626,7 +689,12 @@ print(s)
 # 时间复杂度：O(1)
 len(s)
 ```
-## 力扣217 存在重复元素
+## 力扣217 存在重复元素（集合版）
+- 题型：集合判重
+- 思路：比较数组长度与去重后集合长度是否一致。
+- 时间复杂度：O(n)
+- 空间复杂度：O(n)
+
 题目见上
 ```python
 class Solution:
@@ -634,6 +702,11 @@ class Solution:
         return len(set(nums)) != len(nums)
 ```
 ## 力扣705 设计哈希集合
+- 题型：数据结构设计
+- 思路：当前实现用列表存储并线性查找，强调接口语义。
+- 时间复杂度：add/remove/contains 最坏 O(n)
+- 空间复杂度：O(n)
+
 不使用任何内建的哈希表库设计一个哈希集合（HashSet）。
 
 实现 MyHashSet 类：
@@ -685,6 +758,11 @@ class MyHashSet:
 后序遍历顺序是左子树→右子树→根节点。
 
 ## 力扣144 二叉树的前序遍历
+- 题型：树遍历（DFS）
+- 思路：递归顺序为 根 -> 左 -> 右。
+- 时间复杂度：O(n)
+- 空间复杂度：O(h)
+
 ```python
 # Definition for a binary tree node.
 # class TreeNode:
@@ -705,6 +783,11 @@ class Solution:
 ```
 
 ## 力扣94 二叉树的中序遍历
+- 题型：树遍历（DFS）
+- 思路：递归顺序为 左 -> 根 -> 右。
+- 时间复杂度：O(n)
+- 空间复杂度：O(h)
+
 ```python
 class Solution:
     def inorderTraversal(self, root: Optional[TreeNode]) -> List[int]:
@@ -719,6 +802,11 @@ class Solution:
 ```
 
 ## 力扣145 二叉树的后序遍历
+- 题型：树遍历（DFS）
+- 思路：递归顺序为 左 -> 右 -> 根。
+- 时间复杂度：O(n)
+- 空间复杂度：O(h)
+
 ```python
 class Solution:
     def postorderTraversal(self, root: Optional[TreeNode]) -> List[int]:
@@ -752,7 +840,7 @@ class Test:
         heapq.heappush(minheap, 1)
         heapq.heappush(minheap, 11)
         # [1, 2, 9, 10, 8, 11]
-        print(miniheap)
+        print(minheap)
 
         # 查看元素
         # 1
@@ -766,9 +854,14 @@ class Test:
 
         # 遍历
         while len(minheap) != 0:
-            print(heapq.heapop(minheap))
+            print(heapq.heappop(minheap))
 ```
-## 力扣 数组中的第k个最大元素
+## 力扣215 数组中的第 K 个最大元素
+- 题型：堆
+- 思路：使用最大堆（负数最小堆模拟），弹出 k-1 次后堆顶即答案。
+- 时间复杂度：O(n log n)（当前实现）
+- 空间复杂度：O(n)
+
 给定整数数组 nums 和整数 k，请返回数组中第 k 个最大的元素。
 请注意，你需要找的是数组排序后的第 k 个最大的元素，而不是第 k 个不同的元素。
 你必须设计并实现时间复杂度为 O(n) 的算法解决此问题。
@@ -794,7 +887,12 @@ class Solution:
 
         return heapq.heappop(heap)*-1
 ```
-## 力扣692 前k个高频单词
+## 力扣692 前 K 个高频单词
+- 题型：哈希 + 小顶堆
+- 思路：先统计词频，再用大小为 k 的堆维护前 k 个元素。
+- 时间复杂度：O(n log k)
+- 空间复杂度：O(n)
+
 给定一个单词列表 words 和一个整数 k ，返回前 k 个出现次数最多的单词。
 返回的答案应该按单词出现频率由高到低排序。如果不同的单词有相同出现频率， 按字典顺序 排序。
 
@@ -841,5 +939,47 @@ class Node:
         return self.key > nxt.key if self.value == nxt.value else self.value < nxt.value
 ```
 # 图
+图由顶点（Vertex）和边（Edge）组成，可用于表示网络连接、依赖关系、路径问题等。
+
 ## 邻接表
+邻接表适合稀疏图，空间复杂度通常为 `O(V + E)`。
+
+```python
+from collections import deque
+
+graph = {
+    "A": ["B", "C"],
+    "B": ["D"],
+    "C": ["D", "E"],
+    "D": [],
+    "E": []
+}
+
+def bfs(start: str):
+    visited = set([start])
+    q = deque([start])
+    order = []
+    while q:
+        node = q.popleft()
+        order.append(node)
+        for nxt in graph[node]:
+            if nxt not in visited:
+                visited.add(nxt)
+                q.append(nxt)
+    return order
+```
+
 ## 邻接矩阵
+邻接矩阵适合稠密图，判断两点是否相连的时间复杂度为 `O(1)`。
+
+```python
+vertices = ["A", "B", "C", "D"]
+idx = {v: i for i, v in enumerate(vertices)}
+
+matrix = [[0] * len(vertices) for _ in vertices]
+edges = [("A", "B"), ("A", "C"), ("B", "D"), ("C", "D")]
+
+for u, v in edges:
+    matrix[idx[u]][idx[v]] = 1
+    matrix[idx[v]][idx[u]] = 1  # 无向图
+```
